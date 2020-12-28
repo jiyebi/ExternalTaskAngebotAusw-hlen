@@ -14,8 +14,8 @@ import java.util.*;
 @Slf4j
 public class HandlerService {
     private Angebot bestOffer = new Angebot();
-    private String logString = "The best Offer is:";
-    ExponentialBackoffStrategy fetchTimer = new ExponentialBackoffStrategy(500L, 2, 500L);
+    private final String logString = "The best Offer is:";
+    final ExponentialBackoffStrategy fetchTimer = new ExponentialBackoffStrategy(500L, 2, 500L);
     int maxTasksToFetchWithinOnRequest = 1;
 
     public ExternalTaskClient getExternalTaskClient(){
