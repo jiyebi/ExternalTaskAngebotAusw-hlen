@@ -2,6 +2,8 @@ package com.devk.AngebotAuswaehlen.Model;
 
 import lombok.*;
 
+import java.math.BigDecimal;
+
 
 @Builder
 @Setter@Getter
@@ -18,9 +20,9 @@ public class Angebot {
 
     private String adresse;
 
-    private long einzelpreis;
+    private BigDecimal einzelpreis;
 
-    private long gesamtpreis;
+    private BigDecimal gesamtpreis;
 
 
 }
