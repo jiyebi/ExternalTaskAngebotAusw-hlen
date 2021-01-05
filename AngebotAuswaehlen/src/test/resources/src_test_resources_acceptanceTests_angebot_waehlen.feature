@@ -18,7 +18,7 @@
     Szenario: Wenn nur ein Angebot geliefert wird, dann wird dieses verwendet
       Angenommen es gibt den folgenden Versandauftrag
         | Größe | Anzahl | Geldwert |
-        | 5     | 10     | 100      |
+        | 5     | 10     | 1000      |
       Und es gibt das folgende Angebot
         | id | Grundkosten | Preis pro Anzahl |
         | 1  | 100         | 0.5              |

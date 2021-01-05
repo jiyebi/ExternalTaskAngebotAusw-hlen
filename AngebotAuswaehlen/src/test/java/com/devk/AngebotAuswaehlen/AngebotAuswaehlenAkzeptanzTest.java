@@ -52,7 +52,7 @@ public class AngebotAuswaehlenAkzeptanzTest {
 
     @Wenn("ich den Task {string} aufrufe")
     public void ich_den_task_aufrufe(String string) {
-    Mockito.when(mockExternalTask.getId()).thenReturn("ich bin eine ID");
+    Mockito.when(mockExternalTask.getId()).thenReturn("i'am an ID");
     Mockito.doNothing().when(mockExternalTaskService).complete(Mockito.eq(mockExternalTask), captor.capture());
     handlerService.execute(mockExternalTask,mockExternalTaskService);
 
@@ -73,8 +73,8 @@ public class AngebotAuswaehlenAkzeptanzTest {
 
         dataMapList.forEach(stringStringMap -> {
             long id = Long.parseLong(stringStringMap.get("id"));
-            BigDecimal Grundkosten = new BigDecimal(dataMapList.get(0).get("Grundkosten"));
-            BigDecimal PreisProAnzahl = new BigDecimal(dataMapList.get(0).get("Preis pro Anzahl"));
+            BigDecimal Grundkosten = new BigDecimal(stringStringMap.get("Grundkosten"));
+            BigDecimal PreisProAnzahl = new BigDecimal(stringStringMap.get("Preis pro Anzahl"));
 
             Angebot angebot = Angebot.builder().id(id).einzelpreis(PreisProAnzahl).gesamtpreis(Grundkosten).build();
 
@@ -89,12 +89,12 @@ public class AngebotAuswaehlenAkzeptanzTest {
     public void istDiesesDasBesteAngebot(DataTable dataTable) {
         List<Map<String, String>> dataMapList = dataTable.asMaps(String.class, String.class);
         long id = Long.parseLong(dataMapList.get(0).get("id"));
-        BigDecimal Grundkosten = new BigDecimal(dataMapList.get(0).get("Grundkosten"));
-        BigDecimal PreisProAnzahl = new BigDecimal(dataMapList.get(0).get("Preis pro Anzahl"));
+        BigDecimal grundkosten = new BigDecimal(dataMapList.get(0).get("Grundkosten"));
+        BigDecimal preisProAnzahl = new BigDecimal(dataMapList.get(0).get("Preis pro Anzahl"));
 
 
 
-        Angebot angebot = Angebot.builder().id(id).einzelpreis(PreisProAnzahl).gesamtpreis(Grundkosten).build();
+        Angebot angebot = Angebot.builder().id(id).einzelpreis(preisProAnzahl).gesamtpreis(grundkosten).build();
 
         Mockito.verify(mockExternalTaskService, Mockito.times(1)).complete(Mockito.eq(mockExternalTask), Mockito.anyMap());
 
